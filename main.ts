@@ -29,7 +29,14 @@ export default class Wypst extends Plugin {
 				displayMode: r.display,
 			}
 
-			const renderedString = katex.renderToString(e, renderSettings);
+			let renderedString = '';
+
+			const regex = /\\[a-zA-Z]+/;
+			if (regex.test(e)) {
+				renderedString = katex.renderToString(e, renderSettings);
+			} else {
+				renderedString = wypst.renderToString(e, renderSettings);
+			}
 			return parser.parseFromString(renderedString, "text/html").body.firstChild;
 		}
 	}
