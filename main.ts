@@ -3,7 +3,7 @@ import katex from 'katex';
 import wypst from 'wypst';
 
 export default class Wypst extends Plugin {
-	_tex2chtml: any;
+	_tex2chtml;
 	wasmPath = this.app.vault.configDir + '/plugins/obsidian-wypst/core_bg.wasm';
 
 	async onload() {
