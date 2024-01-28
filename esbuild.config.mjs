@@ -1,6 +1,8 @@
 import esbuild from "esbuild";
 import process from "process";
 import builtins from "builtin-modules";
+import fs from 'fs';
+import path from 'path';
 
 const banner =
 `/*
@@ -32,6 +34,11 @@ const context = await esbuild.context({
 		"@lezer/highlight",
 		"@lezer/lr",
 		...builtins],
+	loader: {
+		'.woff': 'dataurl',
+		'.woff2': 'dataurl',
+		'.ttf': 'dataurl',
+	},
 	format: "cjs",
 	target: "es2018",
 	logLevel: "info",
@@ -42,6 +49,7 @@ const context = await esbuild.context({
 
 if (prod) {
 	await context.rebuild();
+	fs.renameSync('main.css', 'styles.css');
 	process.exit(0);
 } else {
 	await context.watch();
