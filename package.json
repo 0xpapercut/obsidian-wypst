@@ -21,6 +21,6 @@
 		"obsidian": "latest",
 		"tslib": "2.4.0",
 		"typescript": "4.7.4",
-		"wypst": "github:0xpapercut/wypst#main"
+		"wypst": "^0.0.1"
 	}
 }
