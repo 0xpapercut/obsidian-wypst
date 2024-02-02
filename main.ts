@@ -3,6 +3,7 @@ import katex from 'katex';
 import wypst from 'wypst';
 
 import 'katex/dist/katex.css';
+import 'default.css';
 
 export default class Wypst extends Plugin {
 	_tex2chtml;
