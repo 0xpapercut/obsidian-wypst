@@ -29,7 +29,11 @@ export default class Wypst extends Plugin {
 				displayMode: r.display,
 			}
 			if (!hasLatexCommand(e)) {
-				renderedString = wypst.renderToString(e, renderSettings);
+				try {
+					renderedString = wypst.renderToString(e, renderSettings);
+				} catch (error) {
+					renderedString = `<span style="color: red;">${error}</span>`;
+				}
 			} else {
 				renderedString = katex.renderToString(e, renderSettings);
 			}
