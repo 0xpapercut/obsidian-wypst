@@ -8,7 +8,10 @@
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
 		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
-	"keywords": ["typst", "wypst"],
+	"keywords": [
+		"typst",
+		"wypst"
+	],
 	"author": "0xpapercut",
 	"license": "MIT",
 	"devDependencies": {
