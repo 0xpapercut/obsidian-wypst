@@ -37,6 +37,7 @@ const context = await esbuild.context({
 		'.woff': 'dataurl',
 		'.woff2': 'dataurl',
 		'.ttf': 'dataurl',
+		'.wasm': 'binary',
 	},
 	format: "cjs",
 	target: "es2018",
@@ -49,7 +50,6 @@ const context = await esbuild.context({
 if (prod) {
 	await context.rebuild();
 	fs.renameSync('main.css', 'styles.css');
-	fs.copyFileSync('node_modules/wypst/core/core_bg.wasm', 'core_bg.wasm');
 	process.exit(0);
 } else {
 	await context.watch();

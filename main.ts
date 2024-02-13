@@ -1,13 +1,13 @@
 import { Plugin, loadMathJax } from 'obsidian';
 import katex from 'katex';
 import wypst from 'wypst';
+import wasm from 'wypst/core/core_bg.wasm';
 
 import 'katex/dist/katex.css';
 import 'default.css';
 
 export default class Wypst extends Plugin {
 	_tex2chtml;
-	wasmPath = this.app.vault.configDir + '/plugins/obsidian-wypst/core_bg.wasm';
 
 	async onload() {
 		await loadMathJax();
@@ -16,7 +16,6 @@ export default class Wypst extends Plugin {
 			throw new Error("MathJax failed to load.");
 		}
 
-		const wasm = await this.app.vault.adapter.readBinary(this.wasmPath);
 		await wypst.init(wasm);
 
 		const parser = new DOMParser();
