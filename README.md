@@ -4,6 +4,8 @@ High quality rendering of [Typst](https://github.com/typst/typst) in Obsidian, p
 ## Usage
 This plugin overrides regular math blocks (`$<...>$` and `$$<...>$$`), so that they're rendered as Typst math.
 
+![Example](media/example.png)
+
 ## Compatibility
 To maximize compatibility with LaTeX math blocks, the rendering backend switches to MathJax when certain structures like `\begin{environment}<...>\end{environment}` or `\<some-symbol>` are encoutered.
 
