@@ -1,5 +1,4 @@
 import { Plugin, loadMathJax } from 'obsidian';
-import katex from 'katex';
 import wypst from 'wypst';
 import wasm from 'wypst/core/core_bg.wasm';
 
@@ -22,22 +21,22 @@ export default class Wypst extends Plugin {
 		this._tex2chtml = global.MathJax.tex2chtml;
 
 		global.MathJax.tex2chtml = (e, r) => {
-			let renderedString = '';
-			const renderSettings = {
-				throwOnError: false,
-				displayMode: r.display,
-			}
 			if (!hasLatexCommand(e)) {
+				const renderSettings = {
+					throwOnError: false,
+					displayMode: r.display,
+				}
+				let renderedString = '';
+
 				try {
 					renderedString = wypst.renderToString(e, renderSettings);
 				} catch (error) {
 					renderedString = `<span style="color: red;">${error}</span>`;
 				}
+				return parser.parseFromString(renderedString, "text/html").body.firstChild;
 			} else {
-				renderedString = katex.renderToString(e, renderSettings);
+				return this._tex2chtml(e, r);
 			}
-
-			return parser.parseFromString(renderedString, "text/html").body.firstChild;
 		}
 	}
 
