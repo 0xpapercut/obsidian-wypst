@@ -1,13 +1,13 @@
-# obsidian-wypst
-High quality rendering of Typst in Obsidian, powered by wypst.
+# Wypst
+High quality rendering of [Typst](https://github.com/typst/typst) in Obsidian, powered by [wypst](https://github.com/0xpapercut/wypst).
 
 ## Usage
 This plugin overrides regular math blocks (`$<...>$` and `$$<...>$$`), so that they're rendered as Typst math.
 
 ## Compatibility
-To maximize compatibility with LaTeX documents, the rendering backend switches to KaTeX when certain structures like `\begin{environment}<...>\end{environment}` or `\<some-symbol>` are encoutered, or if otherwise the Typst rendering fails.
+To maximize compatibility with LaTeX documents, the rendering backend switches to KaTeX when certain structures like `\begin{environment}<...>\end{environment}` or `\<some-symbol>` are encoutered.
+
+For example, `$pi$` will be rendered using Typst, whereas `$\pi$` will be rendered as regular LaTeX; for this specific case the rendering quality will be identical.
 
 ## Issues
-The rendering is not slow, but certain documents can take some time to open. I hope to investigate this issue in the future.
-
-I welcome everyone who encounters a problem to open a issue on [0xpapercut/obsidian-wypst](https://github.com/0xpapercut/obsidian-wypst/issues/new).
+I welcome everyone who encounters a problem to open an issue on [0xpapercut/obsidian-wypst](https://github.com/0xpapercut/obsidian-wypst/issues/new).
