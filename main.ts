@@ -1,4 +1,4 @@
-import { App, Plugin, PluginSettingTab, Setting, loadMathJax } from 'obsidian';
+import { App, MarkdownView, Plugin, PluginSettingTab, Setting, loadMathJax } from 'obsidian';
 import wypst from 'wypst';
 import wasm from 'wypst/core/core_bg.wasm';
 
@@ -52,7 +52,9 @@ export default class Wypst extends Plugin {
 			} else {
 				return this._tex2chtml(e, r);
 			}
-		}
+		};
+
+		this.app.workspace.getActiveViewOfType(MarkdownView)?.previewMode.rerender(true);
 	}
 
 	async loadSettings() {
@@ -65,6 +67,7 @@ export default class Wypst extends Plugin {
 
 	onunload() {
 		global.MathJax.tex2chtml = this._tex2chtml;
+		this.app.workspace.getActiveViewOfType(MarkdownView)?.previewMode.rerender(true);
 	}
 }
 
