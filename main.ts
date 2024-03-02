@@ -35,7 +35,6 @@ export default class Wypst extends Plugin {
 		global.MathJax.tex2chtml = (e, r) => {
 			if (!hasLatexCommand(e)) {
 				const renderSettings = {
-					throwOnError: false,
 					displayMode: r.display,
 				}
 				let renderedString = '';
