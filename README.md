@@ -6,6 +6,8 @@ This plugin overrides regular math blocks (`$<...>$` and `$$<...>$$`), so that t
 
 ![Example](media/example.png)
 
+If this plugin doesn't render the LaTeX code in your vault correctly, you can try out the `fallbackToLatexOnError` experimental setting.
+
 ## Compatibility
 To maximize compatibility with LaTeX math blocks, the rendering backend switches to MathJax when certain structures like `\begin{environment}<...>\end{environment}` or `\<some-symbol>` are encoutered.
 
