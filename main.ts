@@ -23,16 +23,16 @@ export default class Wypst extends Plugin {
 
 		await loadMathJax();
 
-		if (!global.MathJax) {
+		if (!globalThis.MathJax) {
 			throw new Error("MathJax failed to load.");
 		}
 
 		await wypst.init(wasm);
 
 		const parser = new DOMParser();
-		this._tex2chtml = global.MathJax.tex2chtml;
+		this._tex2chtml = globalThis.MathJax.tex2chtml;
 
-		global.MathJax.tex2chtml = (e, r) => {
+		globalThis.MathJax.tex2chtml = (e, r) => {
 			if (!hasLatexCommand(e)) {
 				const renderSettings = {
 					displayMode: r.display,
@@ -65,7 +65,7 @@ export default class Wypst extends Plugin {
 	}
 
 	onunload() {
-		global.MathJax.tex2chtml = this._tex2chtml;
+		globalThis.MathJax.tex2chtml = this._tex2chtml;
 		this.app.workspace.getActiveViewOfType(MarkdownView)?.previewMode.rerender(true);
 	}
 }
